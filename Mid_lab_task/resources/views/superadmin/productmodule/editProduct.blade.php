@@ -6,12 +6,13 @@
  
  @section('content')
     <div class="container text-center">
-        <h2>Add Products</h2>
+        <h2>Edit Products</h2>
         <div class="col-md-12  ">
             @include('include.alert')
-            <form action="{{ route('product.addProducts') }}" method="post">
+            <form action="{{ route('product.updateProducts') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="id" value="{{ $data->id }}" placeholder="Product name" hidden>
                 <input type="text" class="form-control" name="product_name" value="{{ $data->product_name }}" placeholder="Product name">
                 </div>
                 <span class="text-danger">@error('product_name'){{ $message }}@enderror</span>
@@ -20,14 +21,19 @@
                 </div>
                 <span class="text-danger">@error('unit_prics'){{ $message }}@enderror</span>
                 <div class="form-group">
-                    <select name="category_id" class="form-control" id="exampleFormControlSelect1">
-                    <option value="1">Shirt</option>
-                    <option value="2">jeans</option>
-                    <option value="3">T-Shirt</option>
+                    <select class="custom-select " name="category_id">
+                        @forelse($category as $cat)
+                        <option value="{{ $cat->id }}"
+                            @if ($data->category_id == $cat->id) selected
+                            @endif >
+                            {{ $cat->category_name }}
+                        </option>
+                        @empty
+                        @endforelse
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="quantity" autocomplete="quantity" value="{{ old('quantity') }}" placeholder="quantity">
+                <input type="text" class="form-control" name="quantity" autocomplete="quantity" value="{{ $data->quantity }}" placeholder="quantity">
                 </div>
                 <span class="text-danger">@error('quantity'){{ $message }}@enderror</span>
                 

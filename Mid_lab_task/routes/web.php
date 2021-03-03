@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/add_products', [ProductController::class,'addProducts'])->name('product.addProducts');
         //existing
         Route::get('/existing_products/edit/{id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.edit');
+        Route::post('/existing_products/update', [ProductController::class,'updateExistingProduct'])->name('product.updateProducts');
+        
         Route::get('/existing_products/delete/{id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.delete');
         Route::get('t/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.details');
 

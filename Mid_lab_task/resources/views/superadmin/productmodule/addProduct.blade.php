@@ -20,10 +20,11 @@
                 </div>
                 <span class="text-danger">@error('unit_prics'){{ $message }}@enderror</span>
                 <div class="form-group">
-                    <select name="category_id" class="form-control" id="exampleFormControlSelect1">
-                    <option value="1">Shirt</option>
-                    <option value="2">jeans</option>
-                    <option value="3">T-Shirt</option>
+                    <select class="custom-select " name="category_id">
+                        @forelse($category as $cat)
+                        <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                        @empty
+                        @endforelse
                     </select>
                 </div>
                 <div class="input-group mb-3">
