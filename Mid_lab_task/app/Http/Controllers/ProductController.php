@@ -94,8 +94,9 @@ class ProductController extends Controller
     public function DetailsExistingProduct($id)
     {
         $data = Product::find($id);
-       return back()->with('success','Product deleted successfully',compact('data',$data));
+       return \view('superadmin.productmodule.existingDetails',\compact('data',$data));
     }
+
 
     public function editUpcomingProduct($id)
     {
@@ -135,5 +136,11 @@ class ProductController extends Controller
     {
         Product::destroy($id);
        return redirect('system/product_management/upcoming_products')->with('success','Product deleted successfully');
+    }
+
+    public function DetailsUpcomingProduct($id)
+    {
+        $data = Product::find($id);
+       return \view('superadmin.productmodule.upcomingDetails',\compact('data',$data));
     }
 }

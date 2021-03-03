@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/existing_products/delete/{id}', [ProductController::class,'deleteExistingProduct'])->name('existingproduct.delete');
         Route::post('/existing_products/deleted/{id}', [ProductController::class,'deletedExistingProduct'])->name('existingproduct.deleteted');
-        Route::get('/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.details');
+        Route::get('/product/{product_id}', [ProductController::class,'DetailsExistingProduct'])->name('existingproduct.details');
 
         //upcoming
 
@@ -75,8 +75,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/upcoming_products/delete/{id}', [ProductController::class,'deleteUpcomingProduct'])->name('upcomingproduct.delete');
         Route::post('/upcoming_products/deleted/{id}', [ProductController::class,'deletedUpcomingProduct'])->name('upcomingproduct.deleted');
-        Route::get('/upcoming_products/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('upcomingproduct.details');
-
+        
+        Route::get('/product/{product_id}', [ProductController::class,'DetailsUpcomingProduct'])->name('upcomingproduct.details');
         
         
     });

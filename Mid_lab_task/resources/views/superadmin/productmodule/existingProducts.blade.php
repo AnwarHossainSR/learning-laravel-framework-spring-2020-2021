@@ -68,7 +68,7 @@
                             <a href="{{ route('existingproduct.edit',$data->id) }}" title="Edit" class="btn text-success">
                                 <i class="fas fa-edit nav-icon"></i>
                             </a>
-                            <a href="{{ route('existingproduct.edit',$data->id) }}" title="Details" class="btn text-success">
+                            <a href="{{ route('existingproduct.details',$data->id) }}" title="Details" class="btn text-success">
                                 <i class="fas fa-info-circle nav-icon"></i>
                             </a>
                             </td>
