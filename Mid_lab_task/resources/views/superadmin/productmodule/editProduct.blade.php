@@ -46,9 +46,15 @@
 
                 <div class="form-group">
                     <select name="vendor_id" class="form-control" id="exampleFormControlSelect1">
-                    <option value="1">vendor-1</option>
-                    <option value="2">vendor-2</option>
-                    <option value="3">vendor-3</option>
+                        <select class="custom-select " name="category_id">
+                            @forelse($vendor as $cat)
+                            <option value="{{ $cat->id }}"
+                                @if ($data->vendor_id == $cat->id) selected
+                                @endif >
+                                {{ $cat->vendor_name }}
+                            </option>
+                            @empty
+                            @endforelse
                     </select>
                 </div>
 

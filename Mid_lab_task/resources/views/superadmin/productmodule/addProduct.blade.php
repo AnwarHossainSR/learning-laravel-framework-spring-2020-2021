@@ -40,10 +40,11 @@
                 </div>
 
                 <div class="form-group">
-                    <select name="vendor_id" class="form-control" id="exampleFormControlSelect1">
-                    <option value="1">vendor-1</option>
-                    <option value="2">vendor-2</option>
-                    <option value="3">vendor-3</option>
+                    <select class="custom-select " name="vendor_id">
+                        @forelse($vendor as $ven)
+                        <option value="{{ $ven->id }}">{{ $ven->vendor_name }}</option>
+                        @empty
+                        @endforelse
                     </select>
                 </div>
 

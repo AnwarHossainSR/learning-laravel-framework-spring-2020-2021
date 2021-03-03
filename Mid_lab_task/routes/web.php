@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/existing_products/delete/{id}', [ProductController::class,'deleteExistingProduct'])->name('existingproduct.delete');
         Route::post('/existing_products/deleted/{id}', [ProductController::class,'deletedExistingProduct'])->name('existingproduct.deleteted');
-        Route::get('/product/{product_id}', [ProductController::class,'DetailsExistingProduct'])->name('existingproduct.details');
+        Route::get('/existingproduct/{product_id}', [ProductController::class,'DetailsExistingProduct'])->name('existingproduct.details');
 
         //upcoming
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Vendore;
 
 class ProductController extends Controller
 {
@@ -27,7 +28,8 @@ class ProductController extends Controller
     public function addProducts()
     {
         $category = Category::all();
-        return \view('superadmin.productmodule.addProduct',compact('category',$category));
+        $vendor = Vendore::all();
+        return \view('superadmin.productmodule.addProduct',['category'=>$category,'vendor'=>$vendor]);
     }
 
     public function productStore(Request $req)
@@ -55,7 +57,8 @@ class ProductController extends Controller
     {
         $data = Product::find($id);
         $category = Category::all();
-        return \view('superadmin.productmodule.editProduct',['data'=>$data,'category'=>$category]);
+        $vendor = Vendore::all();
+        return \view('superadmin.productmodule.editProduct',['data'=>$data,'category'=>$category,'vendor'=>$vendor]);
     }
 
     public function updateExistingProduct(Request $req)
