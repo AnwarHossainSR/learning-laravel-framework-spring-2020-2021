@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,9 +51,20 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/physical_store/pending/pdfdownload', [SalesController::class, 'downloadPendingProduct'])->name('Sales.pdf.pending.download');
     });
 
+    //module 6 products
+
     Route::group(['prefix' => 'system/product_management'], function () {
 
-        Route::get('/physical_store', [SalesController::class,'physicalStore'])->name('SalesController.physicalStore');
+        Route::get('/manage', [ProductController::class,'manage'])->name('product.manage');
+        Route::get('/existing_products', [ProductController::class,'existingProducts'])->name('product.existingProducts');
+        Route::get('/upcoming_products', [ProductController::class,'upcomingProducts'])->name('product.upcomingProducts');
+        Route::get('/add_products', [ProductController::class,'addProducts'])->name('product.addProducts');
+        //existing
+        Route::get('/existing_products/edit/{id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.edit');
+        Route::get('/existing_products/delete/{id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.delete');
+        Route::get('t/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.details');
+
+        
         
     });
 

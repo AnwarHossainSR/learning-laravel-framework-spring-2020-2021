@@ -56,13 +56,42 @@
                 </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('SalesController.ecommerceLog') }}" class="nav-link">
-                <i class="nav-icon text-primary fas fa-th"></i>
-                <p>
-                    Product Module
-                </p>
+            <li class="nav-item has-treeview {{-- menu-open --}}">
+                <a href="#" class="nav-link ">
+    
+                <i class="nav-icon text-primary fab fa-affiliatetheme"></i>
+                    <p>
+                        Product Management
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('product.manage') }}" class="nav-link {{-- active --}}">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Manage Products</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('product.existingProducts') }}" class="nav-link {{-- active --}}">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Existing Products</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('product.upcomingProducts') }}" class="nav-link {{-- active --}}">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Upcoming Products</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('product.addProducts') }}" class="nav-link {{-- active --}}">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Add Products</p>
+                        </a>
+                    </li>
+                    
+                </ul>
             </li>
             <li class="nav-item has-treeview {{-- menu-open --}}">
                 <a href="#" class="nav-link ">
