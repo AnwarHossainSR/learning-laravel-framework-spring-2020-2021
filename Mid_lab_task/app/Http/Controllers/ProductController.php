@@ -57,4 +57,10 @@ class ProductController extends Controller
         $value->save();
         return \redirect('system/product_management/existing_products')->with('success','Product added successfully');
     }
+
+    public function deleteExistingProduct($id)
+    {
+        Product::destroy($id);
+       return back()->with('success','Product deleted successfully');
+    }
 }
