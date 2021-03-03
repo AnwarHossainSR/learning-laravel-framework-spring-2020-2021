@@ -56,7 +56,7 @@
                         <tr>
                             <th>{{ $data->id }}</th>
                             <td>{{ $data->product_name }}</td>
-                            <td>{{ $data->product_prics }}</td>
+                            <td>{{ $data->unit_prics }}</td>
                             <td>{{ $data->category_id }}</td>
                             <td>{{ $data->quantity }}</td>
                             <td>{{ $data->status }}</td>
@@ -68,6 +68,9 @@
                             <a href="{{ route('upcomingproduct.edit',$data->id) }}" title="Edit" class="btn text-success">
                                 <i class="fas fa-edit nav-icon"></i>
                             </a>
+                            <a href="{{ route('existingproduct.edit',$data->id) }}" title="Details" class="btn text-success">
+                              <i class="fas fa-info-circle nav-icon"></i>
+                          </a>
                             </td>
                         </tr>
                     @endforeach

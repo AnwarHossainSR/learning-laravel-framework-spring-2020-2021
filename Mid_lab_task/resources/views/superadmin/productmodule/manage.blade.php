@@ -11,7 +11,7 @@
    <div class="container-fluid">
        <div class="row mb-2">
            <div class="col-sm-12 d-flex justify-content-center">
-               
+               @include('superadmin.include.alert')
            </div>
        </div>
    </div>

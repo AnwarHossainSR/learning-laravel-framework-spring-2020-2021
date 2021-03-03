@@ -59,12 +59,23 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/existing_products', [ProductController::class,'existingProducts'])->name('product.existingProducts');
         Route::get('/upcoming_products', [ProductController::class,'upcomingProducts'])->name('product.upcomingProducts');
         Route::get('/add_products', [ProductController::class,'addProducts'])->name('product.addProducts');
+        Route::post('/store', [ProductController::class,'productStore'])->name('product.storeProduct');
         //existing
         Route::get('/existing_products/edit/{id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.edit');
         Route::post('/existing_products/update', [ProductController::class,'updateExistingProduct'])->name('product.updateProducts');
 
         Route::get('/existing_products/delete/{id}', [ProductController::class,'deleteExistingProduct'])->name('existingproduct.delete');
-        Route::get('t/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.details');
+        Route::post('/existing_products/deleted/{id}', [ProductController::class,'deletedExistingProduct'])->name('existingproduct.deleteted');
+        Route::get('/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('existingproduct.details');
+
+        //upcoming
+
+        Route::get('/upcoming_products/edit/{id}', [ProductController::class,'editUpcomingProduct'])->name('upcomingproduct.edit');
+        Route::post('/upcoming_products/update', [ProductController::class,'updateUpcomingProduct'])->name('product.updateProducts');
+
+        Route::get('/upcoming_products/delete/{id}', [ProductController::class,'deleteUpcomingProduct'])->name('upcomingproduct.delete');
+        Route::post('/upcoming_products/deleted/{id}', [ProductController::class,'deletedUpcomingProduct'])->name('upcomingproduct.deleted');
+        Route::get('/upcoming_products/{product_id}/vendor_details/{vendor_id}', [ProductController::class,'editExistingProduct'])->name('upcomingproduct.details');
 
         
         

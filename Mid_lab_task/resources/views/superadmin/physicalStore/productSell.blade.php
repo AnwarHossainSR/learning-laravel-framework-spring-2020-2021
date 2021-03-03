@@ -7,7 +7,7 @@
  @section('content')
     <div class="container text-center">
         <h2>Product Sales Log</h2>
-        <div class="col-md-6 ">
+        <div class="col-md-12 ">
             @include('include.alert')
             <form action="{{ route('SalesController.salesLog') }}" method="post">
                 @csrf

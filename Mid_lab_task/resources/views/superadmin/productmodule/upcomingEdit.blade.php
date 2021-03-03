@@ -6,29 +6,34 @@
  
  @section('content')
     <div class="container text-center">
-        <h2>Add Products</h2>
+        <h2>Edit Upcoming Products</h2>
         <div class="col-md-12  ">
             @include('include.alert')
-            <form action="{{ route('product.storeProduct') }}" method="post">
+            <form action="{{ route('product.updateProducts') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="product_name" value="{{ old('product_name') }}" placeholder="Product name">
+                    <input type="text" class="form-control" name="id" value="{{ $data->id }}" placeholder="Product name" hidden>
+                <input type="text" class="form-control" name="product_name" value="{{ $data->product_name }}" placeholder="Product name">
                 </div>
                 <span class="text-danger">@error('product_name'){{ $message }}@enderror</span>
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="unit_prics" value="{{ old('unit_prics') }}" placeholder="Unit Prics">
+                <input type="text" class="form-control" name="unit_prics" value="{{ $data->unit_prics }}" placeholder="Unit Prics">
                 </div>
                 <span class="text-danger">@error('unit_prics'){{ $message }}@enderror</span>
                 <div class="form-group">
                     <select class="custom-select " name="category_id">
                         @forelse($category as $cat)
-                        <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                        <option value="{{ $cat->id }}"
+                            @if ($data->category_id == $cat->id) selected
+                            @endif >
+                            {{ $cat->category_name }}
+                        </option>
                         @empty
                         @endforelse
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="quantity" autocomplete="quantity" value="{{ old('quantity') }}" placeholder="quantity">
+                <input type="text" class="form-control" name="quantity" autocomplete="quantity" value="{{ $data->quantity }}" placeholder="quantity">
                 </div>
                 <span class="text-danger">@error('quantity'){{ $message }}@enderror</span>
                 
